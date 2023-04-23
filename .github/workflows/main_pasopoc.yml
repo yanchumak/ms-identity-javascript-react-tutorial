@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: 3-Authorization-II\2-call-api-b2c\API
+          path: /3-Authorization-II/2-call-api-b2c/API
 
   deploy:
     runs-on: ubuntu-latest
