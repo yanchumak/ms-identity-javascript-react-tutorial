@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "ncc build app.js -o dist",
-    "test": "jest --forceExit"
+    "build": "ncc build app.js -o dist"
   },
   "dependencies": {
     "cors": "^2.8.5",
