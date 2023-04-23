@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
+    "build": "ncc build app.js -o dist",
     "test": "jest --forceExit"
   },
   "dependencies": {
@@ -15,7 +16,8 @@
     "lowdb": "^1.0.0",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
-    "passport-azure-ad": "^4.3.4"
+    "passport-azure-ad": "^4.3.4",
+    "@vercel/ncc": "0.36.1"
   },
   "main": "index.js",
   "repository": {
