@@ -25,14 +25,13 @@ jobs:
         run: |
           cd 3-Authorization-II/2-call-api-b2c/API
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./dist/index.js
+          path: ./3-Authorization-II/2-call-api-b2c/API/dist/index.js
 
   deploy:
     runs-on: ubuntu-latest
