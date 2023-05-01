@@ -14,7 +14,7 @@ export const b2cPolicies = {
     names: {
         signUpSignIn: 'B2C_1_paso_susi',
         forgotPassword: 'B2C_1_paso_rst',
-        editProfile: 'B2C_1_edit_profile_v2',
+        editProfile: 'B2C_1_paso_prof',
     },
     authorities: {
         signUpSignIn: {
@@ -24,7 +24,7 @@ export const b2cPolicies = {
             authority: 'https://pasopoc.b2clogin.com/pasopoc.onmicrosoft.com/B2C_1_paso_rst',
         },
         editProfile: {
-            authority: 'https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile_v2',
+            authority: 'https://pasopoc.b2clogin.com/pasopoc.onmicrosoft.com/B2C_1_paso_prof',
         },
     },
     authorityDomain: 'pasopoc.b2clogin.com',
@@ -82,7 +82,7 @@ export const msalConfig = {
  */
 export const protectedResources = {
     apiTodoList: {
-        endpoint: 'http://localhost:5000/api/todolist',
+        endpoint: 'https://pasopoc.azurewebsites.net/api/todolist',
         scopes: {
             read: ['https://pasopoc.onmicrosoft.com/tasks-api/tasks.read'],
             write: ['https://pasopoc.onmicrosoft.com/tasks-api/tasks.write'],

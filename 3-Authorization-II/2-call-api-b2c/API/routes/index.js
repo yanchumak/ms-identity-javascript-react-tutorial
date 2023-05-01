@@ -1,9 +1,12 @@
 const express = require('express');
 const todolist = require('../controllers/todolist');
+const tokenEnrichment = require('../controllers/tokenEnrichment');
 
 // initialize router
 const router = express.Router();
 
+
+router.post('/token/enrichment', tokenEnrichment.enrichToken);
 
 router.get('/todolist', todolist.getTodos);
 

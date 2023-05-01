@@ -98,32 +98,38 @@ passport.use(bearerStrategy);
 app.use(
     '/api',
     (req, res, next) => {
-        passport.authenticate(
-            'oauth-bearer',
-            {
-                session: false,
-            },
-            (err, user, info) => {
-                if (err) {
-                    /**
-                     * An error occurred during authorization. Either pass the error to the next function
-                     * for Express error handler to handle, or send a response with the appropriate status code.
-                     */
-                    return res.status(401).json({ error: err.message });
-                }
+        console.log(req.url);
+        if (req.url?.includes('token/enrichment')) {
+            console.log('token/enrichment');
+            next();
+        } else {
+            passport.authenticate(
+                'oauth-bearer',
+                {
+                    session: false,
+                },
+                (err, user, info) => {
+                    if (err) {
+                        /**
+                         * An error occurred during authorization. Either pass the error to the next function
+                         * for Express error handler to handle, or send a response with the appropriate status code.
+                         */
+                        return res.status(401).json({error: err.message});
+                    }
 
-                if (!user) {
-                    // If no user object found, send a 401 response.
-                    return res.status(401).json({ error: 'Unauthorized' });
-                }
+                    if (!user) {
+                        // If no user object found, send a 401 response.
+                        return res.status(401).json({error: 'Unauthorized'});
+                    }
 
-                if (info) {
-                    // access token payload will be available in req.authInfo downstream
-                    req.authInfo = info;
-                    return next();
+                    if (info) {
+                        // access token payload will be available in req.authInfo downstream
+                        req.authInfo = info;
+                        return next();
+                    }
                 }
-            }
-        )(req, res, next);
+            )(req, res, next);
+        }
     },
     router, // the router with all the routes
     (err, req, res, next) => {
@@ -135,7 +141,7 @@ app.use(
         // set locals, only providing error in development
         res.locals.message = err.message;
         res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+        console.log("err" + res?.locals?.message);
         // send error response
         res.status(err.status || 500).send(err);
     }
